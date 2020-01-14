@@ -30,7 +30,7 @@ public class HandleLogin extends HttpServlet{
       password=request.getParameter("password").trim();
       logname=handleString(logname);
       password=handleString(password);
-      String uri="jdbc:mysql://cdb-9pyzq6b2.cd.tencentcdb.com:10013/ticket?"+"user=root&password=da80912102&characterEncoding=utf-8";
+      String uri="jdbc:mysql://127.0.0.1:3306/ticket?"+"user=root&password=&characterEncoding=utf-8";
       boolean boo=(logname.length()>0)&&(password.length()>0);  
       try{ 
            con=DriverManager.getConnection(uri);
@@ -40,20 +40,20 @@ public class HandleLogin extends HttpServlet{
               ResultSet rs=sql.executeQuery(weiqi);
               boolean m=rs.next();
               if(m==true){ 
-                  //µ÷ÓÃµÇÂ¼³É¹¦µÄ·½·¨:
+                  //è°ƒç”¨ç™»å½•æˆåŠŸçš„æ–¹æ³•:
                   success(request,response,logname,password); 
                   RequestDispatcher dispatcher=
-                  request.getRequestDispatcher("index.jsp");//×ª·¢
+                  request.getRequestDispatcher("index.jsp");//è½¬å‘
                   dispatcher.forward(request,response);
               }
               else{
-                  String backNews="ÄúÊäÈëµÄÓÃ»§Ãû²»´æÔÚ£¬»òÃÜÂë²»°ãÅä";
-                  //µ÷ÓÃµÇÂ¼Ê§°ÜµÄ·½·¨:
+                  String backNews="æ‚¨è¾“å…¥çš„ç”¨æˆ·åä¸å­˜åœ¨ï¼Œæˆ–å¯†ç ä¸èˆ¬é…";
+                  //è°ƒç”¨ç™»å½•å¤±è´¥çš„æ–¹æ³•:
                   fail(request,response,logname,backNews); 
               }
            }
            else{
-                  String backNews="ÇëÊäÈëÓÃ»§ÃûºÍÃÜÂë";
+                  String backNews="è¯·è¾“å…¥ç”¨æˆ·åå’Œå¯†ç ";
                   fail(request,response,logname,backNews);
            }
            con.close();
@@ -73,24 +73,24 @@ public class HandleLogin extends HttpServlet{
 	      HttpSession session=request.getSession(true);
 	      try{  loginBean=(Login)session.getAttribute("loginBean");
 	            if(loginBean==null){
-	               loginBean=new Login();  //´´½¨ĞÂµÄÊı¾İÄ£ĞÍ 
+	               loginBean=new Login();  //åˆ›å»ºæ–°çš„æ•°æ®æ¨¡å‹ 
 	               session.setAttribute("loginBean",loginBean);
 	               loginBean=(Login)session.getAttribute("loginBean");
 	            }
 	            String name =loginBean.getLogname();
 	            if(name.equals(logname)) {
-	               loginBean.setBackNews(logname+"ÒÑ¾­µÇÂ¼ÁË");
+	               loginBean.setBackNews(logname+"å·²ç»ç™»å½•äº†");
 	               loginBean.setLogname(logname);
 	            }
-	            else {  //Êı¾İÄ£ĞÍ´æ´¢ĞÂµÄµÇÂ¼ÓÃ»§
-	                loginBean.setBackNews(logname+"µÇÂ¼³É¹¦");
+	            else {  //æ•°æ®æ¨¡å‹å­˜å‚¨æ–°çš„ç™»å½•ç”¨æˆ·
+	                loginBean.setBackNews(logname+"ç™»å½•æˆåŠŸ");
 	                loginBean.setLogname(logname);
 	            }
 	      }
 	      catch(Exception ee){
 	            loginBean=new Login();  
 	            session.setAttribute("loginBean",loginBean);
-	            loginBean.setBackNews(logname+"µÇÂ¼³É¹¦");
+	            loginBean.setBackNews(logname+"ç™»å½•æˆåŠŸ");
 	            loginBean.setLogname(logname);
 	      }
    }
