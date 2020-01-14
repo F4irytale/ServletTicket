@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<web-app>
+<servlet>
+	<servlet-name>register</servlet-name>
+	<servlet-class>myservlet.control.HandleRegister</servlet-class>
+</servlet>
+<servlet-mapping>
+	<servlet-name>register</servlet-name>	
+	<url-pattern>/helpRegister</url-pattern>
+</servlet-mapping>
+<servlet>
+	<servlet-name>loginServlet</servlet-name>
+	<servlet-class>myservlet.control.HandleLogin</servlet-class>
+</servlet>
+<servlet-mapping>
+	<servlet-name>loginServlet</servlet-name>	
+	<url-pattern>/loginServlet</url-pattern>
+</servlet-mapping>
+<servlet>
+	<servlet-name>chaxun</servlet-name>
+	<servlet-class>myservlet.control.HandleChaxun</servlet-class>
+</servlet>
+<servlet-mapping>
+	<servlet-name>chaxun</servlet-name>	
+	<url-pattern>/chaxun</url-pattern>
+</servlet-mapping>
+<servlet>
+	<servlet-name>xiadan</servlet-name>
+	<servlet-class>myservlet.control.Xiadan</servlet-class>
+</servlet>
+<servlet-mapping>
+	<servlet-name>xiadan</servlet-name>	
+	<url-pattern>/xiadan</url-pattern>
+</servlet-mapping>
+</web-app>
