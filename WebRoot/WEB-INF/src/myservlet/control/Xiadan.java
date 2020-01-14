@@ -39,7 +39,7 @@ public class Xiadan extends HttpServlet {
 		       String daoda = null ;
 		       String logname=null;
 		    	logname = request.getParameter("logname");
-	        String uri = "jdbc:mysql://cdb-9pyzq6b2.cd.tencentcdb.com:10013/ticket?"+"user=root&password=da80912102&characterEncoding=utf-8";
+	        String uri = "jdbc:mysql://127.0.0.1:3306/ticket?"+"user=root&password=&characterEncoding=utf-8";
 	        try{ 
 	        	
 	             con=DriverManager.getConnection(uri);
@@ -50,7 +50,7 @@ public class Xiadan extends HttpServlet {
 	             time = rs.getString(2);
 	             chufa = rs.getString(3);
 	             daoda = rs.getString(4);}
-	             con.close();                     //¹Ø±ÕÁ¬½Ó
+	             con.close();                     //å…³é—­è¿æ¥
 	        }
 	        catch(SQLException exp){}
 	        if ( logname == null||logname.length()==0){
@@ -58,7 +58,7 @@ public class Xiadan extends HttpServlet {
 	            try {
 	             PrintWriter out=response.getWriter();
 	             out.println("<html><body style='text-align:center;'>");
-	             out.println("<script>alert('Çë·µ»ØµÇÂ½')</script>");
+	             out.println("<script>alert('è¯·è¿”å›ç™»é™†')</script>");
 	             out.println("<script>window.location='login.jsp'</script>");
 	             out.println("</body></html>");
 	            }
@@ -93,9 +93,9 @@ public class Xiadan extends HttpServlet {
 		                                                ResultSet.CONCUR_READ_ONLY);
 		           int rs=sql.executeUpdate(condition);
 		           
-		           con.close();                     //¹Ø±ÕÁ¬½Ó
+		           con.close();                     //å…³é—­è¿æ¥
 		      }
 		      catch(SQLException exp){}
-		      response.sendRedirect("dingdan.jsp");//ÖØ¶¨Ïòµ½byPageShow.jsp
+		      response.sendRedirect("dingdan.jsp");//é‡å®šå‘åˆ°byPageShow.jsp
 	   }	   
 }
