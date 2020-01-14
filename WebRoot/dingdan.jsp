@@ -38,7 +38,7 @@ try{
 }
 catch(Exception e){}
 try{
-	String uri="jdbc:mysql://cdb-9pyzq6b2.cd.tencentcdb.com:10013/ticket?"+"user=root&password=da80912102&characterEncoding=utf-8";
+	String uri="jdbc:mysql://127.0.0.1:3306/ticket?"+"user=root&password=&characterEncoding=utf-8";
 	con=DriverManager.getConnection(uri);
 	sql=con.createStatement();
 	String weiqi="select * from dingdan where logname='"+loginBean.getLogname()+"'";
