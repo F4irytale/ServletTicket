@@ -20,7 +20,7 @@ public class HandleRegister extends HttpServlet {
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String uri="jdbc:mysql://cdb-9pyzq6b2.cd.tencentcdb.com:10013/ticket?"+"user=root&password=da80912102&characterEncoding=utf-8";
+		String uri="jdbc:mysql://127.0.0.1:3306/ticket?"+"user=root&password=&characterEncoding=utf-8";
 		Connection con;
 		PreparedStatement sql;
 		Register userBean=new Register();
@@ -34,7 +34,7 @@ public class HandleRegister extends HttpServlet {
 		if(password==null)
 			password="";
 		if(!password.equals(again_password)){
-			userBean.setBackNews("Á½´ÎÃÜÂë²»Í¬£¬×¢²áÊ§°Ü");
+			userBean.setBackNews("ä¸¤æ¬¡å¯†ç ä¸åŒï¼Œæ³¨å†Œå¤±è´¥");
 		RequestDispatcher dispatcher=request.getRequestDispatcher("register.jsp");
 		dispatcher.forward(request,response);
 		return;
@@ -57,19 +57,19 @@ public class HandleRegister extends HttpServlet {
 				sql.setString(3,handleString(telephone));
 				int m=sql.executeUpdate();
 				if(m!=0){
-					backNews="×¢²á³É¹¦,Çë·µ»ØµÇÂ¼£¡";
+					backNews="æ³¨å†ŒæˆåŠŸ,è¯·è¿”å›ç™»å½•ï¼";
 					userBean.setBackNews(backNews);
 					userBean.setLogname(logname);
 					userBean.setTelephone(handleString(telephone));
 				}
 			}
 			else{
-				backNews="ĞÅÏ¢ÌîĞ´²»ÍêÕû»ò´æÔÚ·Ç·¨×Ö·û";
+				backNews="ä¿¡æ¯å¡«å†™ä¸å®Œæ•´æˆ–å­˜åœ¨éæ³•å­—ç¬¦";
 				userBean.setBackNews(backNews);
 			}
 			con.close();
 		} catch (Exception exp) {
-			backNews="ÓÃ»§ÃûÒÑ´æÔÚ";
+			backNews="ç”¨æˆ·åå·²å­˜åœ¨";
 			userBean.setBackNews(backNews);
 		}
 		RequestDispatcher dispatcher=request.getRequestDispatcher("register.jsp");
