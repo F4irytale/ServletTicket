@@ -22,7 +22,7 @@ public class HandleChaxun extends HttpServlet{
       String daoda= request.getParameter("daoda");
       String time= request.getParameter("time");
       if((chufa==null||chufa.length()==0)&&(daoda==null||daoda.length()==0)&&(time==null||time.length()==0)) {
-         fail(request,response,"Ã»ÓĞ²éÑ¯ĞÅÏ¢£¬ÎŞ·¨²éÑ¯");
+         fail(request,response,"æ²¡æœ‰æŸ¥è¯¢ä¿¡æ¯ï¼Œæ— æ³•æŸ¥è¯¢");
          return; 
       }else if((chufa==null||chufa.length()==0)&&(daoda==null||daoda.length()==0)) {
     	  time(request,response,time);
@@ -60,13 +60,13 @@ public class HandleChaxun extends HttpServlet{
            Statement sql=con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
                                                 ResultSet.CONCUR_READ_ONLY);
            ResultSet rs=sql.executeQuery(condition);
-           rowSet=new CachedRowSetImpl();   //´´½¨ĞĞ¼¯¶ÔÏó
+           rowSet=new CachedRowSetImpl();   //åˆ›å»ºè¡Œé›†å¯¹è±¡
            rowSet.populate(rs);
-           dataBean.setRowSet(rowSet);      //ĞĞ¼¯Êı¾İ´æ´¢ÔÚdataBeanÖĞ  
-           con.close();                     //¹Ø±ÕÁ¬½Ó
+           dataBean.setRowSet(rowSet);      //è¡Œé›†æ•°æ®å­˜å‚¨åœ¨dataBeanä¸­  
+           con.close();                     //å…³é—­è¿æ¥
       }
       catch(SQLException exp){}
-      response.sendRedirect("xiangqing.jsp");//ÖØ¶¨Ïòµ½byPageShow.jsp
+      response.sendRedirect("xiangqing.jsp");//é‡å®šå‘åˆ°byPageShow.jsp
    } }
    public void doGet(HttpServletRequest request,
               HttpServletResponse response) 
@@ -91,19 +91,19 @@ public class HandleChaxun extends HttpServlet{
              dataBean=new Chaxun();  
              session.setAttribute("dataBean",dataBean);
         } 
-        String uri = "jdbc:mysql://cdb-9pyzq6b2.cd.tencentcdb.com:10013/ticket?"+"user=root&password=da80912102&characterEncoding=utf-8";
+        String uri = "jdbc:mysql://127.0.0.1:3306/ticket?"+"user=root&password=&characterEncoding=utf-8";
         try{ 
              con=DriverManager.getConnection(uri);
              Statement sql=con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
                                                   ResultSet.CONCUR_READ_ONLY);
              ResultSet rs=sql.executeQuery(condition);
-             rowSet=new CachedRowSetImpl();   //´´½¨ĞĞ¼¯¶ÔÏó
+             rowSet=new CachedRowSetImpl();   //åˆ›å»ºè¡Œé›†å¯¹è±¡
              rowSet.populate(rs);
-             dataBean.setRowSet(rowSet);      //ĞĞ¼¯Êı¾İ´æ´¢ÔÚdataBeanÖĞ  
-             con.close();                     //¹Ø±ÕÁ¬½Ó
+             dataBean.setRowSet(rowSet);      //è¡Œé›†æ•°æ®å­˜å‚¨åœ¨dataBeanä¸­  
+             con.close();                     //å…³é—­è¿æ¥
         }
         catch(SQLException exp){}
-        response.sendRedirect("xiangqing.jsp");//ÖØ¶¨Ïòµ½byPageShow.jsp
+        response.sendRedirect("xiangqing.jsp");//é‡å®šå‘åˆ°byPageShow.jsp
      
     }
    public void time(HttpServletRequest request,HttpServletResponse response,
@@ -130,13 +130,13 @@ try{
   Statement sql=con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
                                        ResultSet.CONCUR_READ_ONLY);
   ResultSet rs=sql.executeQuery(condition);
-  rowSet=new CachedRowSetImpl();   //´´½¨ĞĞ¼¯¶ÔÏó
+  rowSet=new CachedRowSetImpl();   //åˆ›å»ºè¡Œé›†å¯¹è±¡
   rowSet.populate(rs);
-  dataBean.setRowSet(rowSet);      //ĞĞ¼¯Êı¾İ´æ´¢ÔÚdataBeanÖĞ  
-  con.close();                     //¹Ø±ÕÁ¬½Ó
+  dataBean.setRowSet(rowSet);      //è¡Œé›†æ•°æ®å­˜å‚¨åœ¨dataBeanä¸­  
+  con.close();                     //å…³é—­è¿æ¥
 }
 catch(SQLException exp){}
-response.sendRedirect("xiangqing.jsp");//ÖØ¶¨Ïòµ½byPageShow.jsp
+response.sendRedirect("xiangqing.jsp");//é‡å®šå‘åˆ°byPageShow.jsp
 
 }
    public void chufa(HttpServletRequest request,HttpServletResponse response,
@@ -163,13 +163,13 @@ try{
   Statement sql=con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
                                        ResultSet.CONCUR_READ_ONLY);
   ResultSet rs=sql.executeQuery(condition);
-  rowSet=new CachedRowSetImpl();   //´´½¨ĞĞ¼¯¶ÔÏó
+  rowSet=new CachedRowSetImpl();   //åˆ›å»ºè¡Œé›†å¯¹è±¡
   rowSet.populate(rs);
-  dataBean.setRowSet(rowSet);      //ĞĞ¼¯Êı¾İ´æ´¢ÔÚdataBeanÖĞ  
-  con.close();                     //¹Ø±ÕÁ¬½Ó
+  dataBean.setRowSet(rowSet);      //è¡Œé›†æ•°æ®å­˜å‚¨åœ¨dataBeanä¸­  
+  con.close();                     //å…³é—­è¿æ¥
 }
 catch(SQLException exp){}
-response.sendRedirect("xiangqing.jsp");//ÖØ¶¨Ïòµ½byPageShow.jsp
+response.sendRedirect("xiangqing.jsp");//é‡å®šå‘åˆ°byPageShow.jsp
 
 }
    public void daoda(HttpServletRequest request,HttpServletResponse response,
@@ -196,13 +196,13 @@ try{
   Statement sql=con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
                                        ResultSet.CONCUR_READ_ONLY);
   ResultSet rs=sql.executeQuery(condition);
-  rowSet=new CachedRowSetImpl();   //´´½¨ĞĞ¼¯¶ÔÏó
+  rowSet=new CachedRowSetImpl();   //åˆ›å»ºè¡Œé›†å¯¹è±¡
   rowSet.populate(rs);
-  dataBean.setRowSet(rowSet);      //ĞĞ¼¯Êı¾İ´æ´¢ÔÚdataBeanÖĞ  
-  con.close();                     //¹Ø±ÕÁ¬½Ó
+  dataBean.setRowSet(rowSet);      //è¡Œé›†æ•°æ®å­˜å‚¨åœ¨dataBeanä¸­  
+  con.close();                     //å…³é—­è¿æ¥
 }
 catch(SQLException exp){}
-response.sendRedirect("xiangqing.jsp");//ÖØ¶¨Ïòµ½byPageShow.jsp
+response.sendRedirect("xiangqing.jsp");//é‡å®šå‘åˆ°byPageShow.jsp
 
 }
    public void chudao(HttpServletRequest request,HttpServletResponse response,
@@ -229,13 +229,13 @@ try{
   Statement sql=con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
                                        ResultSet.CONCUR_READ_ONLY);
   ResultSet rs=sql.executeQuery(condition);
-  rowSet=new CachedRowSetImpl();   //´´½¨ĞĞ¼¯¶ÔÏó
+  rowSet=new CachedRowSetImpl();   //åˆ›å»ºè¡Œé›†å¯¹è±¡
   rowSet.populate(rs);
-  dataBean.setRowSet(rowSet);      //ĞĞ¼¯Êı¾İ´æ´¢ÔÚdataBeanÖĞ  
-  con.close();                     //¹Ø±ÕÁ¬½Ó
+  dataBean.setRowSet(rowSet);      //è¡Œé›†æ•°æ®å­˜å‚¨åœ¨dataBeanä¸­  
+  con.close();                     //å…³é—­è¿æ¥
 }
 catch(SQLException exp){}
-response.sendRedirect("xiangqing.jsp");//ÖØ¶¨Ïòµ½byPageShow.jsp
+response.sendRedirect("xiangqing.jsp");//é‡å®šå‘åˆ°byPageShow.jsp
 
 }
 }
